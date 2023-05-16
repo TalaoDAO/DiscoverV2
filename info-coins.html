@@ -1,0 +1,646 @@
+<!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
+<!--  Last Published: Tue May 16 2023 15:01:50 GMT+0000 (Coordinated Universal Time)  -->
+<html data-wf-page="6439278f25993274f4bdf35b" data-wf-site="6437d2f39360a787c8205a38">
+<head>
+  <meta charset="utf-8">
+  <title>Info coins</title>
+  <meta content="Info coins" property="og:title">
+  <meta content="Info coins" property="twitter:title">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/discover-coins-part.webflow.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+  <script type="text/javascript">WebFont.load({  google: {    families: ["Varela:400"]  }});</script>
+  <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="images/webclip.png" rel="apple-touch-icon">
+</head>
+<body class="body-5">
+  <div class="titre-retour-acc wf-section">
+    <div class="html-embed-37 w-embed w-script">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <style>
+  #coin-name {
+    display: inline-block;
+    text-align: center;
+    width: 250px;
+    font-weight: 900;
+    font-size: 20px; 
+}
+</style>
+      <script>
+  $(document).ready(function() {
+    // Récupérer le nom de la pièce à partir de l'URL du site
+    var coinNameURLTitre = window.location.search.match(/(\?|&)([^&]*)/)[2].toLowerCase().replace(/%20/g, '-');
+    // Construire l'URL de l'image de la pièce
+    var TitreToken = "https://pro-api.coingecko.com/api/v3/coins/" + coinNameURLTitre + "?x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH";
+    $.ajax({
+      url: TitreToken,
+      type: "GET",
+      dataType: "json",
+      success: function(data) {
+      	var coinName = data.name;
+      	$("#coin-name").html(coinName);
+    	}
+    });
+	});
+</script>
+      <div class="code-name" id="coin-name"></div>
+    </div>
+    <a href="https://discover-coins-part.webflow.io/" class="button-6 w-button">&lt;</a>
+    <a href="#" class="button-8 w-button">☆</a>
+    <div class="logo">
+      <div id="w-node-_4cece870-dfcc-3afe-1005-a765a0e757d5-f4bdf35b" class="html-embed-42 w-embed w-script">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+$(document).ready(function() {
+	// Récupérer le nom de la pièce à partir de l'URL du site
+    var coinNameURLImage = window.location.search.match(/(\?|&)([^&]*)/)[2].toLowerCase().replace(/%20/g, '-');
+    // Construire l'URL de l'image de la pièce
+    var TitreTokenImage = "https://pro-api.coingecko.com/api/v3/coins/" + coinNameURLImage + "?x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH";
+    $.ajax({
+        url: TitreTokenImage,
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            var coinImage = data.image.small;
+            $("#coin-image").html("<img src='" + coinImage + "' width='40' height='40'>");
+        }
+    });
+});
+</script>
+        <div><span id="coin-image"></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="info-token">
+    <div class="html-embed-14 w-embed w-script">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <style>
+#coin-name0 {
+  display: inline-block;
+	width: 250px;
+	font-size: 18px;
+	margin-left: -220px;
+}
+ #coin-price0{
+  font-weight: bolder;
+  font-size: 20px;
+  margin-left: -220px;
+ }
+</style>
+      <script>
+$(document).ready(function() {
+    // Récupérer le nom de la pièce à partir de l'URL du site
+    var coinNameURLNomPrix = window.location.search.match(/(\?|&)([^&]*)/)[2].toLowerCase().replace(/%20/g, '-');
+    // Construire l'URL de l'image de la pièce
+    var TitreTokenNomPrix = "https://pro-api.coingecko.com/api/v3/coins/" + coinNameURLNomPrix + "?x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH";
+$.ajax({
+url: TitreTokenNomPrix,
+type: "GET",
+dataType: "json",
+success: function(data) {
+var coinName0 = data.name;
+var coinPrice0 = data.market_data.current_price.usd;
+$("#coin-name0").html(coinName0);
+$("#coin-price0").html("$" + coinPrice0.toFixed(2));
+}
+});
+});
+</script>
+      <div class="code-name0" id="coin-name0"></div>
+      <br><br>
+      <div><span class="coin-price0" id="coin-price0"></span></div>
+    </div>
+    <div class="html-embed-44 w-embed w-script">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <style>
+  #coin-price-change0 {
+    font-weight: bolder;
+      font-size: 20px;
+  }
+  .green {
+ 	 color: green;
+  }
+  .red {
+ 	 color: red;
+  }
+</style>
+      <script>
+  $(document).ready(function() {
+    // Récupérer le nom de la pièce à partir de l'URL du site
+    var coinNameURLNomPrix = window.location.search.match(/(\?|&)([^&]*)/)[2].toLowerCase().replace(/%20/g, '-');
+    // Construire l'URL de l'image de la pièce
+    var TitreTokenNomPrix = "https://pro-api.coingecko.com/api/v3/coins/" + coinNameURLNomPrix + "?x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH";
+    $.ajax({
+      url: TitreTokenNomPrix,
+      type: "GET",
+      dataType: "json",
+      success: function(data) {
+        var coinPriceChange0 = data.market_data.price_change_percentage_24h;
+        $("#coin-price-change0").html(coinPriceChange0.toFixed(2) + "%");
+        if (coinPriceChange0 >= 0) {
+       	 $("#coin-price-change0").addClass("green");
+        } else {
+       	 $("#coin-price-change0").addClass("red");
+        }
+      }
+      });
+  });
+</script>
+      <br>
+      <div><span class="coin-price-change0" id="coin-price-change0"></span></div>
+    </div>
+  </div>
+  <div class="select-date">
+    <a href="#" class="_7d-b w-button">7d</a>
+    <a href="#" class="_30d-b w-button">30d</a>
+    <a href="#" class="_90d-b w-button">90d</a>
+    <a href="#" class="_1y-b w-button">1y</a>
+    <a href="#" class="max-b w-button">Max</a>
+  </div>
+  <p class="paragraph-2">This feature is not available yet.</p>
+  <div class="graphique"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="image-2"></div><img src="images/gt.png" loading="lazy" height="100" width="350" srcset="images/gt-p-500.png 500w, images/gt.png 503w" sizes="(max-width: 479px) 100vw, 349.99102783203125px" alt="" class="rectangle">
+  <div class="info-coins wf-section">
+    <div class="html-embed-38 w-embed w-script">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <style>
+  #coin-price-change1 {
+    font-weight: bolder;
+    font-size: 20px;
+    margin-left: 10px;
+  }
+  .green1 {
+ 	 color: green;
+  }
+  .red1 {
+ 	 color: red;
+  }
+</style>
+      <script>
+  $(document).ready(function() {
+    // Récupérer le nom de la pièce à partir de l'URL du site
+    var coinNameURLNomPrix1 = window.location.search.match(/(\?|&)([^&]*)/)[2].toLowerCase().replace(/%20/g, '-');
+    // Construire l'URL de l'image de la pièce
+    var TitreTokenNomPrix1 = "https://pro-api.coingecko.com/api/v3/coins/" + coinNameURLNomPrix1 + "?x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH";
+    $.ajax({
+      url: TitreTokenNomPrix1,
+      type: "GET",
+      dataType: "json",
+      success: function(data) {
+        var coinPriceChange1 = data.market_data.price_change_percentage_24h;
+        $("#coin-price-change1").html(coinPriceChange1.toFixed(2) + "%");
+        if (coinPriceChange1 >= 0) {
+       	 $("#coin-price-change1").addClass("green1");
+        } else {
+       	 $("#coin-price-change1").addClass("red1");
+        }
+      }
+      });
+  });
+</script>
+      <br><br>
+      <h4> 24 Volume</h4>
+      <div><span class="coin-price-change1" id="coin-price-change1"></span></div>
+    </div>
+    <div class="html-embed-39 w-embed w-script">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <style>
+  #coin-price-change2 {
+    font-weight: bolder;
+    font-size: 20px;
+    position: relative;
+  	left: 30px;
+  }
+  .green2 {
+ 	 color: green;
+  }
+  .red2 {
+ 	 color: red;
+  }
+</style>
+      <script>
+  $(document).ready(function() {
+    // Récupérer le nom de la pièce à partir de l'URL du site
+    var coinNameURLNomPrix2 = window.location.search.match(/(\?|&)([^&]*)/)[2].toLowerCase().replace(/%20/g, '-');
+    // Construire l'URL de l'image de la pièce
+    var TitreTokenNomPrix2 = "https://pro-api.coingecko.com/api/v3/coins/" + coinNameURLNomPrix2 + "?x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH";
+    $.ajax({
+      url: TitreTokenNomPrix2,
+      type: "GET",
+      dataType: "json",
+      success: function(data) {
+        var coinPriceChange2 = data.market_data.market_cap_change_percentage_24h;
+        $("#coin-price-change2").html(coinPriceChange2.toFixed(2) + "%");
+        if (coinPriceChange2 >= 0) {
+       	 $("#coin-price-change2").addClass("green2");
+        } else {
+       	 $("#coin-price-change2").addClass("red2");
+        }
+      }
+      });
+  });
+</script>
+      <h4>24h Market Cap</h4>
+      <div><span class="coin-price-change2" id="coin-price-change2"></span></div>
+    </div>
+  </div>
+  <div class="ecosystem">
+    <div class="eco-about w-embed w-script">
+      <style>
+  .categories {
+    word-wrap: break-word;
+    margin-top: 20px;
+    width: 300px;
+  }
+  .popupBtn {
+    border-radius: 5px;
+    background: #6600FF;
+    color: white;     
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    right: 20px;
+    top: -25px;
+    margin-top: 50px;
+  }
+  .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    background-color: #000;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 2px #6600FF;
+    color: #fff;
+    z-index: 9999;
+    width: 300px;
+  }
+  .popup h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .description-tether-2 {
+    word-wrap: break-word;
+    margin-top: 20px;
+    width: 350px;
+    overflow-y: scroll;
+    max-height: 180px;
+   }
+  .popupBtn-tether-2 {
+    border-radius: 5px;
+    background: #6600FF;
+    color: white;     
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    right: 20px;
+    top: 55px;
+    margin-top: 80px;
+  }
+  .popup-tether-2 {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    background-color: #000;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 2px #6600FF;
+    color: #fff;
+    z-index: 9999;
+    width: 350px;
+    overflow-y: scroll;
+    max-height: 400px;
+  }
+  .popup-tether-2 h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .close-tether-2 {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .popupLink-tether-2 {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #fff;
+    text-decoration: underline;
+  }
+  .custom-button {
+    margin-right: 20px;
+    margin-left: -10px;
+    border-radius: 5px;
+    background: #6600FF;
+    color: white;
+  }
+  /*.custom-links-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }*/
+  .custom-links-container > div {
+    margin: 10px;
+  }
+</style>
+      <h3>Ecosystem</h3>
+      <div class="categories" id="categories"></div>
+      <br>
+      <button class="popupBtn" id="popupBtn">Show All Ecosystems</button>
+      <div class="popup" id="popup">
+        <span class="close">&times;</span>
+        <h3>All categories</h3>
+        <div id="popupContent"></div>
+      </div>
+      <div style="display: inline-block;">
+        <h3 style="display: inline-block;">About this token</h3>
+        <button class="popupBtn-tether-2" id="popupBtn-tether-2" style="display: inline-block;">Show Description</button>
+      </div>
+      <div class="description-tether-2" id="description-tether-2"></div>
+      <br>
+      <div class="popup-tether-2" id="popup-tether-2">
+        <span class="close-tether-2">&times;</span>
+        <h3>Description</h3>
+        <div id="popupContent-tether-2"></div>
+        <a href="#" target="_blank" class="popupLink-tether-2">Learn more about this token on CoinGecko</a>
+      </div>
+      <h3>Community</h3>
+      <div class="custom-links-container">
+        <div id="custom-links1"></div>
+        <div id="custom-links2"></div>
+      </div>
+      <script>
+  var coinNameEcosystem = window.location.search.match(/(\?|&)([^&]*)/)[2].toLowerCase().replace(/%20/g, '-');
+  var TitreEcosystem = "https://pro-api.coingecko.com/api/v3/coins/" + coinNameEcosystem + "?x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH";
+  var coinNameURLCommunity = window.location.search.match(/(\?|&)([^&]*)/)[2].toLowerCase().replace(/%20/g, '-');
+  var TitreTokenCommunity = "https://pro-api.coingecko.com/api/v3/coins/" + coinNameURLCommunity + "?localization=false&tickers=false&market_data=false&community_data=true&developer_data=false&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH";
+  const url = TitreEcosystem;
+  const categoriesDiv = document.getElementById('categories');
+  const popupContentElement = document.getElementById('popupContent');
+  const popupBtnElement = document.getElementById('popupBtn');
+  const popupElement = document.getElementById('popup');
+  const closeBtnElement = document.querySelector('.close');
+  const descriptionElement = document.getElementById('description-tether-2');
+  const popupContentElementTether = document.getElementById('popupContent-tether-2');
+  const popupBtnElementTether = document.getElementById('popupBtn-tether-2');
+  const popupElementTether = document.getElementById('popup-tether-2');
+  const closeBtnElementTether = document.querySelector('.close-tether-2');
+  const linksDiv1 = document.getElementById("custom-links1");
+  const linksDiv2 = document.getElementById("custom-links2");
+  async function getLinks() {
+    const response = await fetch(TitreTokenCommunity);
+    const data = await response.json();
+    if (!data.links) {
+      console.error("Les liens ne sont pas disponibles");
+      return;
+    }
+    const links = {
+      Discord: data.links.chat_url && data.links.chat_url[0],
+      Twitter: data.links.twitter_screen_name && `https://twitter.com/${encodeURIComponent(data.links.twitter_screen_name)}`,
+      Telegram: data.links.telegram_channel_identifier && `https://t.me/${encodeURIComponent(data.links.telegram_channel_identifier)}`,
+      Reddit: data.links.subreddit_url,
+      Forum: data.links.official_forum_url && data.links.official_forum_url[0],
+      Facebook: data.links.facebook_username && `https://facebook.com/${encodeURIComponent(data.links.facebook_username)}`,
+      GitHub: data.links.repos_url && data.links.repos_url.github && data.links.repos_url.github[0],
+    };
+    const linksArray = Object.entries(links).filter(([name, link]) => link).map(([name, link]) => ({ name, link }));
+    for (let i = 0; i < linksArray.length; i++) {
+      const { name, link } = linksArray[i];
+      const button = document.createElement("button");
+      button.textContent = name;
+      button.classList.add("custom-button");
+      button.addEventListener("click", () => window.open(link));
+      if (i < 3) {
+        linksDiv1.appendChild(button);
+      } else {
+        linksDiv2.appendChild(button);
+      }
+    }
+  }
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const categories = data.categories;
+      let categoriesText = '';
+      for(let i=0; i<Math.min(3, categories.length); i++) {
+        categoriesText += categories[i];
+        if(i !== Math.min(2, categories.length - 1)) {
+          if((i+1) % 2 === 0) {
+            categoriesText += ',<br>';
+          } else {
+            categoriesText += ',&nbsp;&nbsp;&nbsp;';
+          }
+        } else if(categories.length > 4) {
+          categoriesText += '...';
+        }
+      }
+      categoriesDiv.innerHTML = categoriesText;
+      const description = data.description.en;
+      const firstTwoSentences = description.split('. ').slice(0, 4).join('. ') + '...';
+      descriptionElement.textContent = firstTwoSentences;
+      const firstTwoSentences1 = description.replace(/<\/?[^>]+(>|$)/g, "").split('. ').slice(0, 25).join('. ') + '...';
+      descriptionElement.textContent = firstTwoSentences1;
+      const sentences = firstTwoSentences.split('. /(?=[A-Z])/').slice(0, 5);
+      if (sentences.length >= 5) {
+        sentences[4] += '...';
+      }    
+      const sentences1 = firstTwoSentences1.split('. /(?=[A-Z])/').slice(0, 25);
+      if (sentences1.length >= 25) {
+        sentences1[24] += '...';
+      }
+      const descriptionText = sentences.join('.\n');
+      descriptionElement.textContent = descriptionText;
+      popupBtnElement.addEventListener('click', () => {
+        popupContentElement.innerHTML = '<ul>';
+        for(let i = 0; i < categories.length; i++) {
+          popupContentElement.innerHTML += '<li>' + categories[i] + '</li>';
+        }
+        popupContentElement.innerHTML += '</ul>';
+        popupElement.style.display = 'block';
+      });
+      closeBtnElement.addEventListener('click', () => {
+        popupElement.style.display = 'none';
+      });
+      window.addEventListener('click', (e) => {
+        if(e.target === popupElement) {
+          popupElement.style.display = 'none';
+        }
+      });
+      popupBtnElementTether.addEventListener('click', () => {
+        popupContentElementTether.innerHTML = '<p>' + sentences1.join('.<br>') + '.</p>';
+        popupElementTether.style.display = 'block';
+        document.querySelector('.popupLink-tether-2').setAttribute('href', RedirectEcosystem);
+      });
+      closeBtnElementTether.addEventListener('click', () => {
+        popupElementTether.style.display = 'none';
+      });
+      window.addEventListener('click', (e) => {
+        if(e.target === popupElementTether) {
+          popupElementTether.style.display = 'none';
+        }
+      });
+      getLinks();
+    })
+    .catch(error => console.log(error));
+</script>
+    </div>
+  </div>
+  <div>
+    <div class="html-embed-49 w-embed w-script">
+      <style>
+  #website-btn {
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(to top right, #6600FF, #18ACFF);
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 330px;
+    margin: 10px;
+    text-align: center;
+  }
+  .popupRedirect {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    color: #fff;
+    z-index: 9999;
+    width: 100%;
+  }
+  .closeRedirect {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .popup-contentRedirect {
+    margin-top: 20px;
+    text-align: center;
+    color: black;
+  }
+  .popup-text {
+    width: 100%;
+    display: block;
+  }
+  .popup-btnsRedirect {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .popup-btnRedirect {
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+    text-align: center;
+  }
+  #confirm-btn {
+    background-color: #6600FF;
+    margin-left: 10px;
+  }
+  #decline-btn {
+    background-color: transparent;
+    color: black;
+  }
+  #token-image {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    display: block;
+  }
+</style>
+      <div id="links-container"></div>
+      <button id="website-btn">Website</button>
+      <div class="popupRedirect" id="popupRedirect">
+        <span class="closeRedirect">&times;</span>
+        <div class="popup-contentRedirect">
+          <img src="" alt="Token Image" id="token-image">
+          <br>
+          <p><span id="name"></span></p>
+          <p><span id="symbol"></span></p>
+          <p class="popup-text">This is a 3rd party application.
+            By using this application, you accept and consent to its User Agreement and Privacy Policy.
+            Altme is not responsible for the actions, content, or privacy practices of this application.</p>
+          <p></p>
+          <div class="popup-btnsRedirect">
+            <button class="popup-btnRedirect" id="decline-btn">DECLINE</button>
+            <button class="popup-btnRedirect" id="confirm-btn">CONFIRM</button>
+          </div>
+        </div>
+      </div>
+      <script>
+  // Récupérer le nom de la pièce à partir de l'URL du site
+  var coinNameURLWebsite = window.location.search.match(/(\?|&)([^&]*)/)[2].toLowerCase().replace(/%20/g, '-');
+  // Construire l'URL de l'image de la pièce
+  var TitreTokenWebsite = "https://pro-api.coingecko.com/api/v3/coins/" + coinNameURLWebsite + "?x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH";
+  function displayHomepage() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", TitreTokenWebsite);
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        var data = JSON.parse(xhr.responseText);
+        var homepage = data.links.homepage[0];
+        var websiteBtn = document.getElementById("website-btn");
+        websiteBtn.addEventListener("click", function() {
+          document.getElementById("token-image").src = data.image.small;
+          document.getElementById("name").textContent = data.name;
+          document.getElementById("symbol").textContent = data.symbol;
+          document.getElementById("popupRedirect").style.display = "block";
+        });
+        document.querySelector(".closeRedirect").addEventListener("click", function() {
+          document.getElementById("popupRedirect").style.display = "none";
+        });
+        document.getElementById("decline-btn").addEventListener("click", function() {
+          document.getElementById("popupRedirect").style.display = "none";
+        });
+        document.getElementById("confirm-btn").addEventListener("click", function() {
+       		window.open(homepage, "_blank");
+        });
+      }
+    };
+    xhr.send();
+  }
+  displayHomepage();
+</script>
+    </div>
+  </div>
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6437d2f39360a787c8205a38" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="js/webflow.js" type="text/javascript"></script>
+</body>
+</html>
