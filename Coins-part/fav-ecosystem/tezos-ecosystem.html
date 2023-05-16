@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
-<!--  Last Published: Tue May 16 2023 15:01:50 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Tue May 16 2023 15:35:58 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="643ff57929f14306657434fa" data-wf-site="6437d2f39360a787c8205a38">
 <head>
   <meta charset="utf-8">
@@ -430,7 +430,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice3 = data[3].current_price;
 					var coinPriceChange3 = data[3].price_change_percentage_24h;
-					$("#coin-price3").html("$" + coinPrice3);
+					$("#coin-price3").html("$" + coinPrice3.toFixed(6));
 					$("#coin-price-change3").html(coinPriceChange3.toFixed(2) + "%");
 				}
 			});
@@ -535,13 +535,13 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice4 = data[4].current_price;
 					var coinPriceChange4 = data[4].price_change_percentage_24h;
-					$("#coin-price4").html("$" + coinPrice4);
+					$("#coin-price4").html("$" + coinPrice4.toFixed(6));
 					$("#coin-price-change4").html(coinPriceChange4.toFixed(2) + "%");
 				}
 			});
 		});
 	</script>
-              <div><span id="coin-price4ERROR"></span></div>
+              <div><span id="coin-price4"></span></div>
               <div><span id="coin-price-change4"></span></div>
             </div>
           </div>
@@ -640,7 +640,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice5 = data[5].current_price;
 					var coinPriceChange5 = data[5].price_change_percentage_24h;
-					$("#coin-price5").html("$" + coinPrice5);
+					$("#coin-price5").html("$" + coinPrice5.toFixed(6));
 					$("#coin-price-change5").html(coinPriceChange5.toFixed(2) + "%");
 				}
 			});
@@ -955,7 +955,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice8 = data[8].current_price;
 					var coinPriceChange8 = data[8].price_change_percentage_24h;
-					$("#coin-price8").html("$" + coinPrice8);
+					$("#coin-price8").html("$" + coinPrice8.toFixed(6));
 					$("#coin-price-change8").html(coinPriceChange8.toFixed(2) + "%");
 				}
 			});
@@ -1060,7 +1060,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice9 = data[9].current_price;
 					var coinPriceChange9 = data[9].price_change_percentage_24h;
-					$("#coin-price9").html("$" + coinPrice9);
+					$("#coin-price9").html("$" + coinPrice9.toFixed(6));
 					$("#coin-price-change9").html(coinPriceChange9.toFixed(2) + "%");
 				}
 			});
@@ -1165,7 +1165,7 @@ url: "https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=USD&categor
 				success: function(data) {
 					var coinPrice10 = data[10].current_price;
 					var coinPriceChange10 = data[10].price_change_percentage_24h;
-					$("#coin-price10").html("$" + coinPrice10);
+					$("#coin-price10").html("$" + coinPrice10.toFixed(6));
 					$("#coin-price-change10").html(coinPriceChange10.toFixed(2) + "%");
 				}
 			});
@@ -1270,7 +1270,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice11 = data[11].current_price;
 					var coinPriceChange11 = data[11].price_change_percentage_24h;
-					$("#coin-price11").html("$" + coinPrice11);
+					$("#coin-price11").html("$" + coinPrice11.toFixed(6));
 					$("#coin-price-change11").html(coinPriceChange11.toFixed(2) + "%");
 				}
 			});
@@ -2215,7 +2215,7 @@ url: "https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=USD&categor
 				success: function(data) {
 					var coinPrice20 = data[20].current_price;
 					var coinPriceChange20 = data[20].price_change_percentage_24h;
-					$("#coin-price20").html("$" + coinPrice20);
+					$("#coin-price20").html("$" + coinPrice20.toFixed(6));
 					$("#coin-price-change20").html(coinPriceChange20.toFixed(2) + "%");
 				}
 			});
@@ -2425,7 +2425,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice22 = data[22].current_price;
 					var coinPriceChange22 = data[22].price_change_percentage_24h;
-					$("#coin-price22").html("$" + coinPrice22);
+					$("#coin-price22").html("$" + coinPrice22.toFixed(6));
 					$("#coin-price-change22").html(coinPriceChange22.toFixed(2) + "%");
 				}
 			});

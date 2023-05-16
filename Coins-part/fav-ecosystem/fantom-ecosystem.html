@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
-<!--  Last Published: Tue May 16 2023 15:01:50 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Tue May 16 2023 15:35:58 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6440023e9cb7253754e5d8ae" data-wf-site="6437d2f39360a787c8205a38">
 <head>
   <meta charset="utf-8">
@@ -1375,7 +1375,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice12 = data[12].current_price;
 					var coinPriceChange12 = data[12].price_change_percentage_24h;
-					$("#coin-price12").html("$" + coinPrice12);
+					$("#coin-price12").html("$" + coinPrice12.toFixed(6));
 					$("#coin-price-change12").html(coinPriceChange12.toFixed(2) + "%");
 				}
 			});
@@ -2110,7 +2110,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice19 = data[19].current_price;
 					var coinPriceChange19 = data[19].price_change_percentage_24h;
-					$("#coin-price19").html("$" + coinPrice19);
+					$("#coin-price19").html("$" + coinPrice19.toFixed(6));
 					$("#coin-price-change19").html(coinPriceChange19.toFixed(2) + "%");
 				}
 			});
