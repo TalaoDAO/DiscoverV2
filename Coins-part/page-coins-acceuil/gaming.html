@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
-<!--  Last Published: Tue May 16 2023 15:35:58 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Tue May 16 2023 16:24:50 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="64381473a2612c08a9df7c09" data-wf-site="6437d2f39360a787c8205a38">
 <head>
   <meta charset="utf-8">
@@ -745,7 +745,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice6 = data[6].current_price;
 					var coinPriceChange6 = data[6].price_change_percentage_24h;
-					$("#coin-price6").html("$" + coinPrice6);
+					$("#coin-price6").html("$" + coinPrice6.toFixed(6));
 					$("#coin-price-change6").html(coinPriceChange6.toFixed(2) + "%");
 				}
 			});
@@ -1060,7 +1060,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice9 = data[9].current_price;
 					var coinPriceChange9 = data[9].price_change_percentage_24h;
-					$("#coin-price9").html("$" + coinPrice9);
+					$("#coin-price9").html("$" + coinPrice9.toFixed(6));
 					$("#coin-price-change9").html(coinPriceChange9.toFixed(2) + "%");
 				}
 			});
@@ -1585,7 +1585,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice14 = data[14].current_price;
 					var coinPriceChange14 = data[14].price_change_percentage_24h;
-					$("#coin-price14").html("$" + coinPrice14);
+					$("#coin-price14").html("$" + coinPrice14.toFixed(6));
 					$("#coin-price-change14").html(coinPriceChange14.toFixed(2) + "%");
 				}
 			});
@@ -1900,7 +1900,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice18 = data[18].current_price;
 					var coinPriceChange18 = data[18].price_change_percentage_24h;
-					$("#coin-price18").html("$" + coinPrice18);
+					$("#coin-price18").html("$" + coinPrice18.toFixed(6));
 					$("#coin-price-change18").html(coinPriceChange18.toFixed(2) + "%");
 				}
 			});
@@ -2005,7 +2005,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice19 = data[19].current_price;
 					var coinPriceChange19 = data[19].price_change_percentage_24h;
-					$("#coin-price19").html("$" + coinPrice19);
+					$("#coin-price19").html("$" + coinPrice19.toFixed(6));
 					$("#coin-price-change19").html(coinPriceChange19.toFixed(2) + "%");
 				}
 			});
@@ -2320,7 +2320,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice22 = data[22].current_price;
 					var coinPriceChange22 = data[22].price_change_percentage_24h;
-					$("#coin-price22").html("$" + coinPrice22);
+					$("#coin-price22").html("$" + coinPrice22.toFixed(6));
 					$("#coin-price-change22").html(coinPriceChange22.toFixed(2) + "%");
 				}
 			});
@@ -2425,7 +2425,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice23 = data[23].current_price;
 					var coinPriceChange23 = data[23].price_change_percentage_24h;
-					$("#coin-price23").html("$" + coinPrice23);
+					$("#coin-price23").html("$" + coinPrice23.toFixed(6));
 					$("#coin-price-change23").html(coinPriceChange23.toFixed(2) + "%");
 				}
 			});
@@ -2530,7 +2530,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice24 = data[24].current_price;
 					var coinPriceChange24 = data[24].price_change_percentage_24h;
-					$("#coin-price24").html("$" + coinPrice24);
+					$("#coin-price24").html("$" + coinPrice24.toFixed(6));
 					$("#coin-price-change24").html(coinPriceChange24.toFixed(2) + "%");
 				}
 			});
@@ -2635,7 +2635,7 @@ $(document).ready(function() {
 				success: function(data) {
 					var coinPrice25 = data[25].current_price;
 					var coinPriceChange25 = data[25].price_change_percentage_25h;
-					$("#coin-price25").html("$" + coinPrice25);
+					$("#coin-price25").html("$" + coinPrice25.toFixed(6));
 					$("#coin-price-change25").html(coinPriceChange25.toFixed(2) + "%");
 				}
 			});
