@@ -1,0 +1,619 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+$(document).ready(function() {
+// Récupérer le nom de la pièce à partir de l'URL de la page
+var coinNameURLNomPrix = new URLSearchParams(window.location.search).get('?');
+
+// Utiliser le nom de la pièce récupéré comme nécessaire
+console.log(coinNameURLNomPrix);
+
+// Appeler la fonction getData1() avec le nom de la pièce récupéré
+getData1(coinNameURLNomPrix);
+})
+
+let currentChart;
+
+// 24h
+async function getData1(url) {
+    const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/" + url + "/market_chart?vs_currency=usd&days=1&interval=5m&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
+    const data = await response.json();
+    return data;
+}
+
+
+  async function createChart1() {
+    const data = await getData1();
+    const prices = data.prices;
+
+    const chartData = [];
+    const xLabels = [];
+    let previousHour = -1;
+
+    for (let i = 0; i < prices.length; i++) {
+      const timestamp = prices[i][0];
+      const price = prices[i][1];
+      const date = new Date(timestamp);
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+
+      if (hours !== previousHour) {
+        xLabels.push(hours + 'h');
+        previousHour = hours;
+      } else {
+        xLabels.push('');
+      }
+
+      chartData.push({x: i, y: price, time: `${hours}:${minutes < 10 ? '0' : ''}${minutes}`});
+    }
+
+    const totalDuration = 10000;
+    const delayBetweenPoints = totalDuration / chartData.length;
+    const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(chartData[0].y) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+    const animation = {
+      x: {
+        type: 'number',
+        easing: 'linear',
+        duration: delayBetweenPoints,
+        from: NaN,
+        delay(ctx) {
+          if (ctx.type !== 'data' || ctx.xStarted) {
+            return 0;
+          }
+          ctx.xStarted = true;
+          return ctx.index * delayBetweenPoints;
+        }
+      },
+      y: {
+        type: 'number',
+        easing: 'linear',
+        duration: delayBetweenPoints,
+        from: previousY,
+        delay(ctx) {
+          if (ctx.type !== 'data' || ctx.yStarted) {
+            return 0;
+          }
+          ctx.yStarted = true;
+          return ctx.index * delayBetweenPoints;
+        }
+      }
+    };
+
+    const config = {
+      type: 'line',
+      data: {
+        labels: xLabels,
+        datasets: [{
+          backgroundColor: '#150D20',
+          borderColor: '#6600FF',
+          borderWidth: 1,
+          radius: 0,
+          data: chartData,
+        }]
+      },
+      options: {
+        animation,
+        interaction: {
+          intersect: false,
+          mode: 'index',
+          intersect: false
+        },
+        plugins: {
+          legend: false,
+          tooltip: {
+            callbacks: {
+              title: (tooltipItems) => {
+                const index = tooltipItems[0].dataIndex;
+                return chartData[index].time;
+              },
+              label: (tooltipItem) => {
+                const index = tooltipItem.dataIndex;
+                const price = chartData[index].y;
+                return `${price.toFixed(2)} USD`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            display: true,
+            type: 'category',
+            title: {
+              display: true,   
+            },
+            ticks: {
+              maxRotation: 0
+            }
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+            }
+          }
+        }
+      }
+    };
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    if (currentChart) {
+      currentChart.destroy();
+    }
+    currentChart = new Chart(ctx, config);
+  }
+
+  //7d
+  async function getData2() {
+    const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/" + url + "/market_chart?vs_currency=usd&days=7&interval=4h&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
+    const data = await response.json();
+    return data;
+  }
+
+  async function createChart2() {
+    const data = await getData2();
+    const prices = data.prices;
+
+    const chartData = [];
+    const xLabels = [];
+
+    for (let i = 0; i < prices.length; i++) {
+      const timestamp = prices[i][0];
+      const price = prices[i][1];
+      const date = new Date(timestamp);
+      const hours = date.getHours();
+      const day = date.getDate();
+
+      if (hours === 0) {
+        xLabels.push(day + '/' + (date.getMonth() + 1));
+      } else {
+        xLabels.push('');
+      }
+
+      chartData.push({ x: i, y: price, time: hours + 'h', date: date.toDateString() });
+    }
+
+    const config = {
+      type: 'line',
+      data: {
+        labels: xLabels,
+        datasets: [
+          {
+            backgroundColor: '#150D20',
+            borderColor: '#6600FF',
+            borderWidth: 1,
+            radius: 0,
+            data: chartData,
+          },
+        ],
+      },
+      options: {
+        animation: false,
+        interaction: {
+          intersect: false,
+          mode: 'index',
+          intersect: false,
+        },
+        plugins: {
+          legend: false,
+          tooltip: {
+            callbacks: {
+              title: (tooltipItems) => {
+                const index = tooltipItems[0].dataIndex;
+                return chartData[index].date + ' ' + chartData[index].time;
+              },
+              label: (tooltipItem) => {
+                const index = tooltipItem.dataIndex;
+                const price = chartData[index].y;
+                return `${price.toFixed(2)} USD`;
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            display: true,
+            type: 'category',
+            title: {
+              display: true,
+            },
+            ticks: {
+              maxRotation: 0,
+            },
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+            },
+          },
+        },
+      },
+    };
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    if (currentChart) {
+      currentChart.destroy();
+    }
+    currentChart = new Chart(ctx, config);
+  }
+
+  //30d
+  async function getData3() {
+    const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/" + url + "/market_chart?vs_currency=usd&days=30&interval=1d&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
+    const data = await response.json();
+    return data;
+  }
+
+  async function createChart3() {
+    const data = await getData3();
+    const prices = data.prices;
+
+    const chartData = [];
+    const xLabels = [];
+
+    for (let i = 0; i < prices.length; i++) {
+      const timestamp = prices[i][0];
+      const price = prices[i][1];
+      const date = new Date(timestamp);
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+
+      xLabels.push(day + '/' + month);
+
+      chartData.push({ x: i, y: price, time: day + '/' + month, date: date.toDateString() });
+    }
+
+    const config = {
+      type: 'line',
+      data: {
+        labels: xLabels,
+        datasets: [
+          {
+            backgroundColor: '#150D20',
+            borderColor: '#6600FF',
+            borderWidth: 1,
+            radius: 0,
+            data: chartData,
+          },
+        ],
+      },
+      options: {
+        animation: false,
+        interaction: {
+          intersect: false,
+          mode: 'index',
+          intersect: false,
+        },
+        plugins: {
+          legend: false,
+          tooltip: {
+            callbacks: {
+              title: (tooltipItems) => {
+                const index = tooltipItems[0].dataIndex;
+                return chartData[index].date;
+              },
+              label: (tooltipItem) => {
+                const index = tooltipItem.dataIndex;
+                const price = chartData[index].y;
+                return `${price.toFixed(2)} USD`;
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            display: true,
+            type: 'category',
+            title: {
+              display: true,
+            },
+            ticks: {
+              maxRotation: 0,
+            },
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+            },
+          },
+        },
+      },
+    };
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    if (currentChart) {
+      currentChart.destroy();
+    }
+    currentChart = new Chart(ctx, config);
+  }
+
+  //90d
+  async function getData4() {
+    const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/" + url + "/market_chart?vs_currency=usd&days=90&interval=1d&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
+    const data = await response.json();
+    return data;
+  }
+
+  async function createChart4() {
+    const data = await getData4();
+    const prices = data.prices;
+
+    const chartData = [];
+    const xLabels = [];
+
+    for (let i = 0; i < prices.length; i++) {
+      const timestamp = prices[i][0];
+      const price = prices[i][1];
+      const date = new Date(timestamp);
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+
+      xLabels.push(day + '/' + month);
+
+      chartData.push({ x: i, y: price, time: day + '/' + month, date: date.toDateString() });
+    }
+
+    const config = {
+      type: 'line',
+      data: {
+        labels: xLabels,
+        datasets: [
+          {
+            backgroundColor: '#150D20',
+            borderColor: '#6600FF',
+            borderWidth: 1,
+            radius: 0,
+            data: chartData,
+          },
+        ],
+      },
+      options: {
+        animation: false,
+        interaction: {
+          intersect: false,
+          mode: 'index',
+          intersect: false,
+        },
+        plugins: {
+          legend: false,
+          tooltip: {
+            callbacks: {
+              title: (tooltipItems) => {
+                const index = tooltipItems[0].dataIndex;
+                return chartData[index].date;
+              },
+              label: (tooltipItem) => {
+                const index = tooltipItem.dataIndex;
+                const price = chartData[index].y;
+                return `${price.toFixed(2)} USD`;
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            display: true,
+            type: 'category',
+            title: {
+              display: true,
+            },
+            ticks: {
+              maxRotation: 0,
+            },
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+            },
+          },
+        },
+      },
+    };
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    if (currentChart) {
+      currentChart.destroy();
+    }
+    currentChart = new Chart(ctx, config);
+  }
+
+  //1y
+  async function getData5() {
+    const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/" + url + "/market_chart?vs_currency=usd&days=365&interval=1d&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
+    const data = await response.json();
+    return data;
+  }
+
+  async function createChart5() {
+    const data = await getData5();
+    const prices = data.prices;
+
+    const chartData = [];
+    const xLabels = [];
+
+    for (let i = 0; i < prices.length; i++) {
+      const timestamp = prices[i][0];
+      const price = prices[i][1];
+      const date = new Date(timestamp);
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+
+      xLabels.push(day + '/' + month);
+
+      chartData.push({ x: i, y: price, time: day + '/' + month, date: date.toDateString() });
+    }
+
+    const config = {
+      type: 'line',
+      data: {
+        labels: xLabels,
+        datasets: [
+          {
+            backgroundColor: '#150D20',
+            borderColor: '#6600FF',
+            borderWidth: 1,
+            radius: 0,
+            data: chartData,
+          },
+        ],
+      },
+      options: {
+        animation: false,
+        interaction: {
+          intersect: false,
+          mode: 'index',
+          intersect: false,
+        },
+        plugins: {
+          legend: false,
+          tooltip: {
+            callbacks: {
+              title: (tooltipItems) => {
+                const index = tooltipItems[0].dataIndex;
+                return chartData[index].date;
+              },
+              label: (tooltipItem) => {
+                const index = tooltipItem.dataIndex;
+                const price = chartData[index].y;
+                return `${price.toFixed(2)} USD`;
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            display: true,
+            type: 'category',
+            title: {
+              display: true,
+            },
+            ticks: {
+              maxRotation: 0,
+            },
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+            },
+          },
+        },
+      },
+    };
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    if (currentChart) {
+      currentChart.destroy();
+    }
+    currentChart = new Chart(ctx, config);
+  }
+
+  //Max
+  async function getData6() {
+    const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/" + url + "/market_chart?vs_currency=usd&days=max&interval=1d&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
+    const data = await response.json();
+    return data;
+  }
+
+  async function createChart6() {
+    const data = await getData6();
+    const prices = data.prices;
+
+    const chartData = [];
+    const xLabels = [];
+
+    for (let i = 0; i < prices.length; i++) {
+      const timestamp = prices[i][0];
+      const price = prices[i][1];
+      const date = new Date(timestamp);
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+
+      xLabels.push(day + '/' + month);
+
+      chartData.push({ x: i, y: price, time: day + '/' + month, date: date.toDateString() });
+    }
+
+    const config = {
+      type: 'line',
+      data: {
+        labels: xLabels,
+        datasets: [
+          {
+            backgroundColor: '#150D20',
+            borderColor: '#6600FF',
+            borderWidth: 1,
+            radius: 0,
+            data: chartData,
+          },
+        ],
+      },
+      options: {
+        animation: false,
+        interaction: {
+          intersect: false,
+          mode: 'index',
+          intersect: false,
+        },
+        plugins: {
+          legend: false,
+          tooltip: {
+            callbacks: {
+              title: (tooltipItems) => {
+                const index = tooltipItems[0].dataIndex;
+                return chartData[index].date;
+              },
+              label: (tooltipItem) => {
+                const index = tooltipItem.dataIndex;
+                const price = chartData[index].y;
+                return `${price.toFixed(2)} USD`;
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            display: true,
+            type: 'category',
+            title: {
+              display: true,
+            },
+            ticks: {
+              maxRotation: 0,
+            },
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+            },
+          },
+        },
+      },
+    };
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    if (currentChart) {
+      currentChart.destroy();
+    }
+    currentChart = new Chart(ctx, config);
+  }
+
+  window.addEventListener('DOMContentLoaded', createChart1);
+  
+});
+</script>
+
+<body style="background-color: #150D20;">
+<div>
+  <button onclick="createChart1()">24h</button>
+  <button onclick="createChart2()">7d</button>
+  <button onclick="createChart3()">30d</button>
+  <button onclick="createChart4()">90d</button>
+  <button onclick="createChart5()">1y</button>
+  <button onclick="createChart6()">Max</button>
+</div>
+<canvas id="myChart" width="800" height="400"></canvas>
+</body>
+
