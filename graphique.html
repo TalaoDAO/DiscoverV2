@@ -7,16 +7,17 @@
     var TitreTokenNomPrix = "https://pro-api.coingecko.com/api/v3/coins/" + coinNameURLNomPrix;
 
     $.ajax({
-        url: TitreTokenNomPrix,
+    url: TitreTokenNomPrix,
     }).done(function(response) {
-        // Récupérer l'URL à partir de la réponse de la requête Ajax
-        var urlAjax = response.your_url_property_name; // Remplacez "your_url_property_name" par le nom de la propriété contenant l'URL dans la réponse
+        // Récupérer le nom de la pièce à partir de l'URL de la page
+        var coinNameURLNomPrix = window.location.search.substring(1); // Récupère tout après '?' dans l'URL
+        coinNameURLNomPrix = coinNameURLNomPrix.toLowerCase(); // Convertir en minuscules
 
         // Utiliser l'URL récupérée comme nécessaire
-        console.log(urlAjax);
-        
+        console.log(coinNameURLNomPrix);
+
         // Appeler la fonction getData1() avec l'URL récupérée
-        getData1(urlAjax);
+        getData1(coinNameURLNomPrix);
     });
 
     let currentChart;
