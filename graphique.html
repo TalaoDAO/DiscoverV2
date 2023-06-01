@@ -1,7 +1,7 @@
   <style>
     button {
       border-radius: 5px;
-      background: #6600FF;
+      /* background: #6600FF; */
       color: white;
       text-align: center;
       position: relative;
@@ -16,8 +16,20 @@
       width: 55px; /*largeur */
       height: 10px;
       font-size: 90%;
+      color: rgb(45, 41, 41);
     }
 
+  button {
+    /* ...styles existants... */
+    color: rgb(45, 41, 41);
+  }
+
+  button:not(.selected) {
+    background: white;
+    color: black;
+    opacity: 0.1;
+  }
+</style>
     * {
       font-size: 100%;
     }
@@ -29,6 +41,17 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+
+      const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => {
+          button.addEventListener('click', () => {
+            // Supprimez la classe "selected" de tous les boutons
+            buttons.forEach(btn => btn.classList.remove('selected'));
+
+            // Ajoutez la classe "selected" uniquement sur le bouton cliqué
+            button.classList.add('selected');
+          });
+        });
       // Récupération de l'URL actuelle
       var url = window.location.href;
 
