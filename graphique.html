@@ -1,57 +1,51 @@
-  <style>
-    button {
-      border-radius: 5px;
-      /* background: #6600FF; */
-      color: white;
-      text-align: center;
-      position: relative;
-      left : 20px;
-      /* right: 20px; */
-      /* top: -25px; */
-      margin-top: 15px;
-      margin-bottom: -15px;
-      padding: 10px;
-      margin-right:2px;
-      font-family: Nunito, sans-serif;
-      width: 55px; /*largeur */
-      height: 10px;
-      font-size: 90%;
-      color: rgb(45, 41, 41);
-    }
-
+<style>
   button {
-    /* ...styles existants... */
-    color: rgb(45, 41, 41);
+    border-radius: 5px;
+    /* background: #6600FF; */
+    /* color: white; */
+    text-align: center;
+    position: relative;
+    left : 20px;
+    /* right: 20px; */
+    /* top: -25px; */
+    margin-top: 10px;
+    padding: 10px;
+    margin-right:2px;
+    font-family: Nunito, sans-serif;
+    width: 145px;
+    height: 50px;
+    font-size: 90%;
+    background-color: #231e2b42;
+    color: #ffffff;
   }
 
-  button:not(.selected) {
-    background: white;
-    color: black;
-    opacity: 0.1;
+  * {
+    font-size: 130%;
   }
+
+  /* .chart-data {
+    font-size: 130%;
+  } */
+
+  .bouton.violet {
+  background-color: #6600FF;
+  color: #231E2B;
+}
 </style>
-    * {
-      font-size: 100%;
-    }
-
-    /* .chart-data {
-      font-size: 130%;
-    } */
-  </style>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
 
-      const buttons = document.querySelectorAll('button');
-        buttons.forEach(button => {
-          button.addEventListener('click', () => {
-            // Supprimez la classe "selected" de tous les boutons
-            buttons.forEach(btn => btn.classList.remove('selected'));
+    function changerCouleur(bouton) {
+      // Réinitialiser toutes les classes des boutons
+      var boutons = document.getElementsByClassName("bouton");
+        for (var i = 0; i < boutons.length; i++) {
+        boutons[i].className = "bouton";
+       }
 
-            // Ajoutez la classe "selected" uniquement sur le bouton cliqué
-            button.classList.add('selected');
-          });
-        });
+      // Appliquer la classe "violet" uniquement au bouton cliqué
+      bouton.className = "bouton violet";
+    }
       // Récupération de l'URL actuelle
       var url = window.location.href;
 
@@ -665,12 +659,12 @@
 
   <body style="background-color: #150D20;">
     <div>
-      <button onclick="createChart1()">24h</button>
-      <button onclick="createChart2()">7d</button>
-      <button onclick="createChart3()">30d</button>
-      <button onclick="createChart4()">90d</button>
-      <button onclick="createChart5()">1y</button>
-      <button onclick="createChart6()">Max</button>
+      <button class="bouton" onclick="createChart1(), changerCouleur(this)">24h</button>
+      <button class="bouton" onclick="createChart2(), changerCouleur(this)">7d</button>
+      <button class="bouton" onclick="createChart3(), changerCouleur(this)">30d</button>
+      <button class="bouton" onclick="createChart4(), changerCouleur(this)">90d</button>
+      <button class="bouton" onclick="createChart5(), changerCouleur(this)">1y</button>
+      <button class="bouton" onclick="createChart6(), changerCouleur(this)">Max</button>
     </div>
     <canvas id="myChart" width="800" height="400"></canvas>
   </body>
