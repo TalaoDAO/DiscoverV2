@@ -1,5 +1,5 @@
 <style>
-  .boutongraph {
+  bouton {
     border-radius: 5px;
     text-align: center;
     position: relative;
@@ -8,14 +8,14 @@
     padding: 15px;
     margin-right:2px;
     font-family: Nunito, sans-serif;
-    width: 40px; /*largeur*/
+    width: 50px; /*largeur*/
     height: 10px; /*hauteur*/
     font-size: 80%; /*taille text*/
     background-color: #231e2b42;
     color: #ffffff;
   }
 
-  .boutongraph.violet {
+  .bouton.violet {
   background-color: #6600FF;
   color: #ffffff;
 }
@@ -647,12 +647,12 @@
 
   <body style="background-color: #150D20;">
     <div>
-      <button class="boutongraph" onclick="createChart1(), changerCouleur(this)">24h</button>
-      <button class="boutongraph" onclick="createChart2(), changerCouleur(this)">7d</button>
-      <button class="boutongraph" onclick="createChart3(), changerCouleur(this)">30d</button>
-      <button class="boutongraph" onclick="createChart4(), changerCouleur(this)">90d</button>
-      <button class="boutongraph" onclick="createChart5(), changerCouleur(this)">1y</button>
-      <button class="boutongraph" onclick="createChart6(), changerCouleur(this)">Max</button>
+      <button class="bouton" onclick="createChart1(), changerCouleur(this)">24h</button>
+      <button class="bouton" onclick="createChart2(), changerCouleur(this)">7d</button>
+      <button class="bouton" onclick="createChart3(), changerCouleur(this)">30d</button>
+      <button class="bouton" onclick="createChart4(), changerCouleur(this)">90d</button>
+      <button class="bouton" onclick="createChart5(), changerCouleur(this)">1y</button>
+      <button class="bouton" onclick="createChart6(), changerCouleur(this)">Max</button>
     </div>
     <canvas id="myChart" width="800" height="400"></canvas>
   </body>
