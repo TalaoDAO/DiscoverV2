@@ -19,15 +19,7 @@
     color: #ffffff;
   }
 
-  /* * {
-    font-size: 130%;
-  } */
-
-  /* .chart-data {
-    font-size: 130%;
-  } */
-
-  .bouton.violet {
+  .boutongraph.violet {
   background-color: #6600FF;
   color: #231E2B;
 }
@@ -38,9 +30,9 @@
 
     function changerCouleur(bouton) {
       // Réinitialiser toutes les classes des boutons
-      var boutons = document.getElementsByClassName("bouton");
+      var boutons = document.getElementsByClassName("boutongraph");
         for (var i = 0; i < boutons.length; i++) {
-        boutons[i].className = "bouton";
+        boutons[i].className = "boutongraph";
        }
 
       // Appliquer la classe "violet" uniquement au bouton cliqué
@@ -659,12 +651,12 @@
 
   <body style="background-color: #150D20;">
     <div>
-      <button class="bouton" onclick="createChart1(), changerCouleur(this)">24h</button>
-      <button class="bouton" onclick="createChart2(), changerCouleur(this)">7d</button>
-      <button class="bouton" onclick="createChart3(), changerCouleur(this)">30d</button>
-      <button class="bouton" onclick="createChart4(), changerCouleur(this)">90d</button>
-      <button class="bouton" onclick="createChart5(), changerCouleur(this)">1y</button>
-      <button class="bouton" onclick="createChart6(), changerCouleur(this)">Max</button>
+      <button class="boutongraph" onclick="createChart1(), changerCouleur(this)">24h</button>
+      <button class="boutongraph" onclick="createChart2(), changerCouleur(this)">7d</button>
+      <button class="boutongraph" onclick="createChart3(), changerCouleur(this)">30d</button>
+      <button class="boutongraph" onclick="createChart4(), changerCouleur(this)">90d</button>
+      <button class="boutongraph" onclick="createChart5(), changerCouleur(this)">1y</button>
+      <button class="boutongraph" onclick="createChart6(), changerCouleur(this)">Max</button>
     </div>
     <canvas id="myChart" width="800" height="400"></canvas>
   </body>
