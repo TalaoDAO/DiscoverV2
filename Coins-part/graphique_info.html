@@ -39,15 +39,15 @@
       bouton.className = "boutongraph violet";
     }
       // Récupération de l'URL actuelle
-      var url = window.location.href;
+      var url_graph = window.location.href;
 
       // Recherche de la position du caractère "?"
-      var index = url.indexOf("?");
+      var index = url_graph.indexOf("?");
 
       // Vérification si le caractère "?" est présent dans l'URL
       if (index !== -1) {
         // Extraction du texte après le caractère "?"
-        var queryText = url.substr(index + 1);
+        var queryText = url_graph.substr(index + 1);
 
         // Affichage du texte extrait
         console.log(queryText);
