@@ -66,6 +66,8 @@
       }
 
       async function createChart1() {
+        try {
+          
         const data = await getData1();
         const prices = data.prices;
 
@@ -183,6 +185,10 @@
           currentChart.destroy();
         }
         currentChart = new Chart(ctx, config);
+        
+        } catch (error) {
+          console.log(error)
+        }
       }
 
       //7d
