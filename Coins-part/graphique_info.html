@@ -27,7 +27,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-
+console.log("1");
     function changerCouleur(bouton) {
       // Réinitialiser toutes les classes des boutons
       var boutons = document.getElementsByClassName("boutongraph");
@@ -57,7 +57,7 @@
       }
 
       let currentChart;
-
+      console.log("2");
       //24h
       async function getData1() {
         const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/"+ NameUrl + "/market_chart?vs_currency=usd&days=1&interval=5m&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
@@ -649,7 +649,7 @@
         }
         currentChart = new Chart(ctx, config);
       }
-
+      console.log("3");
       window.addEventListener('DOMContentLoaded', createChart1);
       //Afficher automatique le 24h au reset page
       createChart1();
