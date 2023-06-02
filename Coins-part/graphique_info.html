@@ -656,46 +656,47 @@
       createChart1();
 
       $(document).ready(function() {
-
-      $(".boutongraph").on("click", async function(){
-        switch($(this).attr('data-time')){
-          case '24h':
-            createChart1();
-            $(".boutongraph").removeClass('violet')
-            $(this).addClass('violet')
-            break;
-          case '7d':
-            createChart2();
-            $(".boutongraph").removeClass('violet')
-            $(this).addClass('violet')
-            break;
-          case '30d':
-            createChart3();
-            $(".boutongraph").removeClass('violet')
-            $(this).addClass('violet')
-            break;
-          case '90d':
-            createChart4();
-            $(".boutongraph").removeClass('violet')
-            $(this).addClass('violet')
-            break;
-          case '1y':
-            createChart5();
-            $(".boutongraph").removeClass('violet')
-            $(this).addClass('violet')
-            break;
-          case 'max':
-            createChart6();
-            $(".boutongraph").removeClass('violet')
-            $(this).addClass('violet')
-            break;
-          default:
-            createChart1();
-            changerCouleur(this)
-            break;
-        }
+        setTimeout(() => {
+          $(".boutongraph").on("click", async function(){
+            switch($(this).attr('data-time')){
+              case '24h':
+                await createChart1();
+                $(".boutongraph").removeClass('violet')
+                $(this).addClass('violet')
+                break;
+              case '7d':
+                createChart2();
+                $(".boutongraph").removeClass('violet')
+                $(this).addClass('violet')
+                break;
+              case '30d':
+                createChart3();
+                $(".boutongraph").removeClass('violet')
+                $(this).addClass('violet')
+                break;
+              case '90d':
+                createChart4();
+                $(".boutongraph").removeClass('violet')
+                $(this).addClass('violet')
+                break;
+              case '1y':
+                createChart5();
+                $(".boutongraph").removeClass('violet')
+                $(this).addClass('violet')
+                break;
+              case 'max':
+                createChart6();
+                $(".boutongraph").removeClass('violet')
+                $(this).addClass('violet')
+                break;
+              default:
+                createChart1();
+                changerCouleur(this)
+                break;
+            }
+          });
+        }, 1000);
       });
-    });
     </script>
 
     <div>
