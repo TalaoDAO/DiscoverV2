@@ -653,16 +653,55 @@
       window.addEventListener('DOMContentLoaded', createChart1);
       //Afficher automatique le 24h au reset page
       createChart1();
+
+      $(".boutongraph").on("click", async function(){
+        switch($(this).attr('data-time')){
+          case '24h':
+            createChart1();
+            $(".boutongraph").removeClass('violet')
+            $(this).addClass('violet')
+            break;
+          case '7d':
+            createChart2();
+            $(".boutongraph").removeClass('violet')
+            $(this).addClass('violet')
+            break;
+          case '30d':
+            createChart3();
+            $(".boutongraph").removeClass('violet')
+            $(this).addClass('violet')
+            break;
+          case '90d':
+            createChart4();
+            $(".boutongraph").removeClass('violet')
+            $(this).addClass('violet')
+            break;
+          case '1y':
+            createChart5();
+            $(".boutongraph").removeClass('violet')
+            $(this).addClass('violet')
+            break;
+          case 'max':
+            createChart6();
+            $(".boutongraph").removeClass('violet')
+            $(this).addClass('violet')
+            break;
+          default:
+            createChart1();
+            changerCouleur(this)
+            break;
+        }
+      });
     </script>
 
     <div>
       <div>
-        <button class="boutongraph" onclick="createChart1(); changerCouleur(this)">24h</button>
-        <button class="boutongraph" onclick="createChart2(); changerCouleur(this)">7d</button>
-        <button class="boutongraph" onclick="createChart3(); changerCouleur(this)">30d</button>
-        <button class="boutongraph" onclick="createChart4(); changerCouleur(this)">90d</button>
-        <button class="boutongraph" onclick="createChart5(); changerCouleur(this)">1y</button>
-        <button class="boutongraph" onclick="createChart6(); changerCouleur(this)">Max</button>
+        <button class="boutongraph" data-time="24h">24h</button>
+        <button class="boutongraph" data-time="7d">7d</button>
+        <button class="boutongraph" data-time="30d">30d</button>
+        <button class="boutongraph" data-time="90d">90d</button>
+        <button class="boutongraph" data-time="1y">1y</button>
+        <button class="boutongraph" data-time="max">Max</button>
       </div>
       <canvas id="myChart" width="800" height="400"></canvas>
     </div>
