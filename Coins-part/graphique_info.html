@@ -654,8 +654,9 @@
       //Afficher automatique le 24h au reset page
       createChart1();
 
+      $(document).ready(function() {
+        
       $(".boutongraph").on("click", async function(){
-        console.log("eoeeo");
         switch($(this).attr('data-time')){
           case '24h':
             createChart1();
@@ -693,6 +694,7 @@
             break;
         }
       });
+    });
     </script>
 
     <div>
