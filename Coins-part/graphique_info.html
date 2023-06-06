@@ -378,9 +378,9 @@
         currentChart = new Chart(ctx, config);
       }
 
-      //90d
+      //200d
       async function getData4() {
-        const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/"+ NameUrl + "/market_chart?vs_currency=usd&days=90&interval=1d&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
+        const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/"+ NameUrl + "/market_chart?vs_currency=usd&days=200&interval=1d&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
         const data = await response.json();
         return data;
       }
@@ -674,7 +674,7 @@
                 $(".boutongraph").removeClass('violet')
                 $(this).addClass('violet')
                 break;
-              case '90d':
+              case '200d':
                 createChart4();
                 $(".boutongraph").removeClass('violet')
                 $(this).addClass('violet')
@@ -704,7 +704,7 @@
         <button class="boutongraph" data-time="24h">24h</button>
         <button class="boutongraph" data-time="7d">7d</button>
         <button class="boutongraph" data-time="30d">30d</button>
-        <button class="boutongraph" data-time="90d">90d</button>
+        <button class="boutongraph" data-time="200d">200d</button>
         <button class="boutongraph" data-time="1y">1y</button>
         <button class="boutongraph" data-time="max">Max</button>
       </div>
