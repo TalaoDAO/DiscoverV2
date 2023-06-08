@@ -280,7 +280,7 @@
                 type: "GET",
                 dataType: "json",
                 success: function(data) {
-                  var coinImage2 = data[1].image;
+                  var coinImage2 = data[2].image;
                   $("#coin-image2").html("<img src='" + coinImage2 + "' width='40' height='40'>");
                 }
               });
@@ -353,27 +353,29 @@
                 type: "GET",
                 dataType: "json",
                 success: function(data) {
-                  var coinGamingPriceChange2 = data[2].current_price;
-                  var coinGamingPriceChange2 = data[2].price_change_percentage_24h;
-                  var priceChangeText2 = coinGamingPriceChange2.toFixed(2) + "%";
-    
-                  if (coinGamingPriceChange2 > 0) {
-                    priceChangeText2 = "+ " + priceChangeText2;
-                  } else if (coinGamingPriceChange2 < 0) {
-                    priceChangeText2 = "- " + priceChangeText2.substring(1);
-                  }
-                  // Ajouter un espace tous les 3 chiffres dans le prix
-                  coinGamingPrice2 = coinGamingPrice2.toLocaleString();
-    
-                  $("#coin-price-g2").html(coinGamingPrice2 + " $US");
-                  $("#coin-price-change-g2").html(priceChangeText2);
+					var coinGamingPrice3 = data[2].current_price;
+					var coinGamingPriceChange3 = data[2].price_change_percentage_24h;
+					var priceChangeText3 = coinGamingPriceChange3.toFixed(2) + "%";
+
+                    if (coinGamingPriceChange3 > 0) {
+                        priceChangeText3 = "+ " + priceChangeText3;
+                    }
+                    else if (coinGamingPriceChange3 < 0) {
+                    priceChangeText3 = "- " + priceChangeText3.substring(1);
+                        }
+
+                    // Ajouter un espace tous les 3 chiffres dans le prix
+                        coinGamingPrice3 = coinGamingPrice3.toLocaleString();
+
+                    $("#coin-price-g3").html(coinGamingPrice3 + " $US");
+                    $("#coin-price-change-g3").html(priceChangeText3);
                 }
               });
             });
           </script>
-    
-          <div><span class="coin-price-g2" id="coin-price-g2"></span></div>
-          <div><span class="coin-price-change-g2" id="coin-price-change-g2"></span></div>
+
+        <div><span class="coin-price-g3" id="coin-price-g3"></span></div>
+        <div><span class="coin-price-change-g3" id="coin-price-change-g3"></span></div>
         </div>
         </div>
       </div>
