@@ -475,7 +475,7 @@
         var button = document.createElement("button");
         button.style.width = "330px";
         button.style.height = "80px";
-        button.style.backgroundColor = getRandomColor();
+        button.style.backgroundColor = "red";
         button.style.position = "absolute";
         button.style.top = "515px";
         button.style.border = "none";
@@ -488,13 +488,4 @@
       }
     });
   });
-
-  function getRandomColor() {
-  var letters = "0123456789ABCDEF";
-  var color = "#";
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
 </script>
