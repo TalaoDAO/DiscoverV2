@@ -153,256 +153,220 @@
   </div>
   <br>
   <!-- 2eme token -->
-  <div class="barre" style="width: 88%;"></div>
-  <div style="display: flex; align-items: center;">
-    <div style="margin-right: 10px;">
-      <style>
-        #coin-image1 {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 40px;
-          margin-left: 15px;
-        }
-      </style>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script>
-        $(document).ready(function() {
-          $.ajax({
-            url: "https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=USD&category=layer-1&order=market_cap_desc&per_page=25&sparkline=false&price_change_percentage&x_cg_pro_api_key=CG-EMB8qatRbMMjzFU5zXt8Zwqo",
-            type: "GET",
-            dataType: "json",
-            success: function(data) {
-              var coinImage1 = data[1].image;
-              $("#coin-image1").html("<img src='" + coinImage1 + "' width='40' height='40'>");
-            }
-          });
+<div class="barre" style="width: 88%;"></div>
+<div style="display: flex; align-items: center;">
+  <div style="margin-right: 10px;">
+    <style>
+      #coin-image1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        margin-left: 15px;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $.ajax({
+          url: "https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=USD&category=layer-1&order=market_cap_desc&per_page=25&sparkline=false&price_change_percentage&x_cg_pro_api_key=CG-EMB8qatRbMMjzFU5zXt8Zwqo",
+          type: "GET",
+          dataType: "json",
+          success: function(data) {
+            var coinImage1 = data[1].image;
+            $("#coin-image1").html("<img src='" + coinImage1 + "' width='40' height='40'>");
+          }
         });
-      </script>
-      <br>
-      <div class="coin-image1"><span id="coin-image1"></span></div>
-      <br>
-    </div>
-
-    <div style="margin-right: 10px;">
-      <style>
-        #coin-name-g1 {
-          display: inline-block;
-          width: 300px;
-          font-weight: bolder;
-          font-size: 14px;
-          color: white;
-          margin-left:10px;
-        }
-
-        .coin-symbol-g1 {
-          color: #B0A7BC;
-          margin-left: 10px;
-        }
-      </style>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script>
-        $(document).ready(function() {
-          $.ajax({
-            url: "https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=USD&category=layer-1&order=market_cap_desc&per_page=3&page=1&sparkline=false&price_change_percentage&x_cg_pro_api_key=CG-EMB8qatRbMMjzFU5zXt8Zwqo",
-            type: "GET",
-            dataType: "json",
-            success: function(data) {
-              var coinGamingName1 = data[1].name;
-              var coinGamingSymbol1 = data[1].symbol.toUpperCase();
-              $("#coin-name-g1").html(coinGamingName1);
-              $("#coin-symbol-g1").html(coinGamingSymbol1);
-            }
-          });
-        });
-      </script>
-      <br>
-      <div class="coin-name-g1" id="coin-name-g1"></div>
-      <br>
-      <div class="coin-symbol-g1" id="coin-symbol-g1"></div>
-      <br>
-    </div>
-
-    <div style="margin-left: auto;">
-      <style>
-        .coin-price-g2 {
-          display: flex;
-          align-items: center;
-          font-weight: bolder;
-          font-size: 14px;
-          color: white;
-          width: 200px;
-          text-align: right;
-          margin-left: -140px;
-        }
-
-        .coin-price-change-g2 {
-          color: #B0A7BC;
-          margin-left: 10px;
-          width: 200px;
-          text-align: right;
-          margin-left: -140px;
-        }
-      </style>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script>
-        $(document).ready(function() {
-          $.ajax({
-            url: "https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=USD&category=layer-1&order=market_cap_desc&per_page=3&page=1&sparkline=false&price_change_percentage&x_cg_pro_api_key=CG-EMB8qatRbMMjzFU5zXt8Zwqo",
-            type: "GET",
-            dataType: "json",
-            success: function(data) {
-              var coinGamingPrice2 = data[1].current_price;
-              var coinGamingPriceChange2 = data[1].price_change_percentage_24h;
-              var priceChangeText2 = coinGamingPriceChange2.toFixed(2) + "%";
-
-              if (coinGamingPriceChange2 > 0) {
-                priceChangeText2 = "+ " + priceChangeText2;
-              } else if (coinGamingPriceChange2 < 0) {
-                priceChangeText2 = "- " + priceChangeText2.substring(1);
-              }
-              // Ajouter un espace tous les 3 chiffres dans le prix
-              coinGamingPrice2 = coinGamingPrice2.toLocaleString();
-
-              $("#coin-price-g2").html(coinGamingPrice2 + " $US");
-              $("#coin-price-change-g2").html(priceChangeText2);
-            }
-          });
-        });
-      </script>
-      <br>
-      <div><span class="coin-price-g2" id="coin-price-g2"></span></div>
-      <div><span class="coin-price-change-g2" id="coin-price-change-g2"></span></div>
-      <br>
-    </div>
+      });
+    </script>
+    <br>
+    <div class="coin-image1"><span id="coin-image1"></span></div>
+    <br>
   </div>
-  <!-- 3eme token -->
-  <div class="barre" style="width: 88%;"></div>
-    <div style="display: flex; align-items: center;">
-      <div style="margin-right: 10px;">
-        <style>
-          #coin-image2 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 40px;
-            margin-left: 15px;
+
+  <div style="margin-right: 10px;">
+    <style>
+      #coin-name-g1 {
+        display: inline-block;
+        width: 300px;
+        font-weight: bolder;
+        font-size: 14px;
+        color: white;
+        margin-left:10px;
+      }
+
+      .coin-symbol-g1 {
+        color: #B0A7BC;
+        margin-left: 10px;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $.ajax({
+          url: "https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=USD&category=layer-1&order=market_cap_desc&per_page=3&page=1&sparkline=false&price_change_percentage&x_cg_pro_api_key=CG-EMB8qatRbMMjzFU5zXt8Zwqo",
+          type: "GET",
+          dataType: "json",
+          success: function(data) {
+            var coinGamingName1 = data[1].name;
+            var coinGamingSymbol1 = data[1].symbol.toUpperCase();
+            $("#coin-name-g1").html(coinGamingName1);
+            $("#coin-symbol-g1").html(coinGamingSymbol1);
           }
-        </style>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-          $(document).ready(function() {
-            $.ajax({
-              url: "https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=USD&category=layer-1&order=market_cap_desc&per_page=25&sparkline=false&price_change_percentage&x_cg_pro_api_key=CG-EMB8qatRbMMjzFU5zXt8Zwqo",
-              type: "GET",
-              dataType: "json",
-              success: function(data) {
-                var coinImage2 = data[2].image;
-                $("#coin-image2").html("<img src='" + coinImage2 + "' width='40' height='40'>");
-              }
-            });
-          });
-        </script>
-        <br>
-        <div class="coin-image2"><span id="coin-image2"></span></div>
-        <br>
-      </div>
+        });
+      });
+    </script>
+    <br>
+    <div class="coin-name-g1" id="coin-name-g1"></div>
+    <br>
+    <div class="coin-symbol-g1" id="coin-symbol-g1"></div>
+    <br>
+  </div>
 
-      <div style="margin-right: 10px;">
-        <style>
-          #coin-name-g2 {
-            display: inline-block;
-            width: 300px;
-            font-weight: bolder;
-            font-size: 14px;
-            color: white;
-            margin-right: 10px;
+  <div style="margin-left: auto;">
+    <style>
+      .coin-price-g2 {
+        display: flex;
+        align-items: center;
+        font-weight: bolder;
+        font-size: 14px;
+        color: white;
+        width: 200px;
+        margin-right: 10px;
+      }
+
+      .price-g2 {
+        color: #F7931A;
+        margin-left: 10px;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $.ajax({
+          url: "https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=USD&category=layer-1&order=market_cap_desc&per_page=3&page=1&sparkline=false&price_change_percentage&x_cg_pro_api_key=CG-EMB8qatRbMMjzFU5zXt8Zwqo",
+          type: "GET",
+          dataType: "json",
+          success: function(data) {
+            var coinGamingPrice1 = data[1].current_price;
+            $(".coin-price-g2").html("<span class='price-g2'>$" + coinGamingPrice1 + "</span>");
           }
+        });
+      });
+    </script>
+    <br>
+    <div class="coin-price-g2"><span class="price-g2"></span></div>
+    <br>
+  </div>
+</div>
 
-          .coin-symbol-g2 {
-            color: #B0A7BC;
-            margin-right: 10px;
+<!-- 3eme token -->
+<div class="barre" style="width: 70%;"></div>
+<div style="display: flex; align-items: center;">
+  <div style="margin-right: 10px;">
+    <style>
+      #coin-image2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        margin-left: 15px;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $.ajax({
+          url: "https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=USD&category=layer-1&order=market_cap_desc&per_page=25&sparkline=false&price_change_percentage&x_cg_pro_api_key=CG-EMB8qatRbMMjzFU5zXt8Zwqo",
+          type: "GET",
+          dataType: "json",
+          success: function(data) {
+            var coinImage2 = data[2].image;
+            $("#coin-image2").html("<img src='" + coinImage2 + "' width='40' height='40'>");
           }
-        </style>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-          $(document).ready(function() {
-            $.ajax({
-              url: "https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=USD&category=layer-1&order=market_cap_desc&per_page=3&page=1&sparkline=false&price_change_percentage&x_cg_pro_api_key=CG-EMB8qatRbMMjzFU5zXt8Zwqo",
-              type: "GET",
-              dataType: "json",
-              success: function(data) {
-                var coinGamingName2 = data[2].name;
-                var coinGamingSymbol2 = data[2].symbol.toUpperCase();
-                $("#coin-name-g2").html(coinGamingName2);
-                $("#coin-symbol-g2").html(coinGamingSymbol2);
-              }
-            });
-          });
-        </script>
-        <br>
-        <div class="coin-name-g2" id="coin-name-g2"></div>
-        <br>
-        <div class="coin-symbol-g2" id="coin-symbol-g2"></div>
-        <br>
-      </div>
+        });
+      });
+    </script>
+    <br>
+    <div class="coin-image2"><span id="coin-image2"></span></div>
+    <br>
+  </div>
 
-      <div style="margin-left: auto;">
-        <style>
-          .coin-price-g3 {
-            display: flex;
-            align-items: center;
-            font-weight: bolder;
-            font-size: 14px;
-            color: white;
-            width: 200px;
-            text-align: right;
-            margin-left: -140px;
+  <div style="margin-right: 10px;">
+    <style>
+      #coin-name-g2 {
+        display: inline-block;
+        width: 300px;
+        font-weight: bolder;
+        font-size: 14px;
+        color: white;
+        margin-left:10px;
+      }
+
+      .coin-symbol-g2 {
+        color: #B0A7BC;
+        margin-left: 10px;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $.ajax({
+          url: "https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=USD&category=layer-1&order=market_cap_desc&per_page=3&page=1&sparkline=false&price_change_percentage&x_cg_pro_api_key=CG-EMB8qatRbMMjzFU5zXt8Zwqo",
+          type: "GET",
+          dataType: "json",
+          success: function(data) {
+            var coinGamingName2 = data[2].name;
+            var coinGamingSymbol2 = data[2].symbol.toUpperCase();
+            $("#coin-name-g2").html(coinGamingName2);
+            $("#coin-symbol-g2").html(coinGamingSymbol2);
           }
-  
-          .coin-price-change-g3 {
-            color: #B0A7BC;
-            margin-left: 10px;
-            width: 200px;
-            text-align: right;
-            margin-left: -140px;
+        });
+      });
+    </script>
+    <br>
+    <div class="coin-name-g2" id="coin-name-g2"></div>
+    <br>
+    <div class="coin-symbol-g2" id="coin-symbol-g2"></div>
+    <br>
+  </div>
+
+  <div style="margin-left: auto;">
+    <style>
+      .coin-price-g3 {
+        display: flex;
+        align-items: center;
+        font-weight: bolder;
+        font-size: 14px;
+        color: white;
+        width: 200px;
+        margin-right: 10px;
+      }
+
+      .price-g3 {
+        color: #F7931A;
+        margin-left: 10px;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $.ajax({
+          url: "https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=USD&category=layer-1&order=market_cap_desc&per_page=3&page=1&sparkline=false&price_change_percentage&x_cg_pro_api_key=CG-EMB8qatRbMMjzFU5zXt8Zwqo",
+          type: "GET",
+          dataType: "json",
+          success: function(data) {
+            var coinGamingPrice2 = data[2].current_price;
+            $(".coin-price-g3").html("<span class='price-g3'>$" + coinGamingPrice2 + "</span>");
           }
-        </style>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-          $(document).ready(function() {
-            $.ajax({
-              url: "https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=USD&category=layer-1&order=market_cap_desc&per_page=3&page=1&sparkline=false&price_change_percentage&x_cg_pro_api_key=CG-EMB8qatRbMMjzFU5zXt8Zwqo",
-              type: "GET",
-              dataType: "json",
-              success: function(data) {
-        var coinGamingPrice3 = data[2].current_price;
-        var coinGamingPriceChange3 = data[2].price_change_percentage_24h;
-        var priceChangeText3 = coinGamingPriceChange3.toFixed(2) + "%";
-
-                  if (coinGamingPriceChange3 > 0) {
-                      priceChangeText3 = "+ " + priceChangeText3;
-                  }
-                  else if (coinGamingPriceChange3 < 0) {
-                  priceChangeText3 = "- " + priceChangeText3.substring(1);
-                      }
-
-                  // Ajouter un espace tous les 3 chiffres dans le prix
-                      coinGamingPrice3 = coinGamingPrice3.toLocaleString();
-
-                  $("#coin-price-g3").html(coinGamingPrice3 + " $US");
-                  $("#coin-price-change-g3").html(priceChangeText3);
-              }
-            });
-          });
-        </script>
-      <br>
-      <div><span class="coin-price-g3" id="coin-price-g3"></span></div>
-      <div><span class="coin-price-change-g3" id="coin-price-change-g3"></span></div>
-      <br>
-      </div>
-      </div>
-    </div>
+        });
+      });
+    </script>
+    <br>
+    <div class="coin-price-g3"><span class="price-g3"></span></div>
+    <br>
+  </div>
+</div>
 </div>
 
 <!-- bouton 1 -->
