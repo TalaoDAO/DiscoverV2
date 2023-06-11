@@ -252,8 +252,8 @@
           type: "GET",
           dataType: "json",
           success: function(data) {
-            var coinGamingPrice2 = data[0].current_price;
-            var coinGamingPriceChange2 = data[0].price_change_percentage_24h;
+            var coinGamingPrice2 = data[1].current_price;
+            var coinGamingPriceChange2 = data[1].price_change_percentage_24h;
             var priceChangeText2 = coinGamingPriceChange2.toFixed(2) + "%";
 
             if (coinGamingPriceChange2 > 0) {
