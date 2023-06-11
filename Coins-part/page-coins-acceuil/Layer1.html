@@ -352,19 +352,23 @@
   <div style="margin-left: auto;">
     <style>
       .coin-price-g3 {
-        display: flex;
-        align-items: center;
-        font-weight: bolder;
-        font-size: 14px;
-        color: white;
-        width: 200px;
-        margin-right: 10px;
-      }
+          display: flex;
+          align-items: center;
+          font-weight: bolder;
+          font-size: 14px;
+          color: white;
+          width: 200px;
+          text-align: right;
+          margin-left: -140px; /* Décalage de vers la gauche */
+        }
 
-      .price-g3 {
-        color: #F7931A;
-        margin-left: 10px;
-      }
+        .coin-price-change-g3 {
+          color: #B0A7BC;
+          margin-left: 10px;
+          width: 200px;
+          text-align: right;
+          margin-left: -140px;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -374,15 +378,29 @@
           type: "GET",
           dataType: "json",
           success: function(data) {
-            var coinGamingPrice2 = data[2].current_price;
-            $(".coin-price-g3").html("<span class='price-g3'>$" + coinGamingPrice2 + "</span>");
+            var coinGamingPrice3 = data[2].current_price;
+            var coinGamingPriceChange3 = data[2].price_change_percentage_24h;
+            var priceChangeText3 = coinGamingPriceChange3.toFixed(2) + "%";
+
+            if (coinGamingPriceChange3 > 0) {
+              priceChangeText3 = "+ " + priceChangeText3;
+            } else if (coinGamingPriceChange3 < 0) {
+              priceChangeText3 = "- " + priceChangeText3.substring(1);
+            }
+            // Ajouter un espace tous les 3 chiffres dans le prix
+            coinGamingPrice3 = coinGamingPrice3.toLocaleString();
+
+            $("#coin-price-g3").html(coinGamingPrice3 + " $US");
+            $("#coin-price-change-g3").html(priceChangeText3);
           }
         });
       });
     </script>
-    <br>
-    <div class="coin-price-g3"><span class="price-g3"></span></div>
-    <br>
+    <div>
+      <br>
+      <span class="coin-price-g3" id="coin-price-g3"></span>
+      <span class="coin-price-change-g3" id="coin-price-change-g3"></span>
+    </div>
   </div>
 </div>
 </div>
