@@ -266,7 +266,7 @@
             coinGamingPrice2 = coinGamingPrice2.toLocaleString();
 
             // Arrondir le prix à l'entier inférieur et convertir en chaîne de caractères
-            coinGamingPrice2 = Math.floor(coinGamingPrice2).toString();
+            coinGamingPrice2 = Math.trunc(coinGamingPrice2).toString();
 
             $("#coin-price-g2").html(coinGamingPrice2 + " $US");
             $("#coin-price-change-g2").html(priceChangeText2);
