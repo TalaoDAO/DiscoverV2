@@ -107,9 +107,15 @@
             color: white;
             width: 200px;
             text-align: right;
-            margin-left: -140px; /* Décalage vers la gauche */
+            margin-left: -140px; 
+            position: relative;/* Décalage vers la gauche */
           }
-  
+
+          .currency {
+            position: absolute;
+            right: 10px;
+          }
+
           .coin-price-change-g4 {
             color: #B0A7BC;
             margin-left: 10px;
@@ -148,7 +154,7 @@
         </script>
         <div>
           <br>
-          <span class="coin-price-g4" id="coin-price-g4"></span>
+          <span class="coin-price-g4" id="coin-price-g4"><span class="currency">$US</span></span>
           <span class="coin-price-change-g4" id="coin-price-change-g4"></span>
         </div>
       </div>
