@@ -261,14 +261,19 @@
             } else if (coinGamingPriceChange2 < 0) {
               priceChangeText2 = "- " + priceChangeText2.substring(1);
             }
+
             // Ajouter un espace tous les 3 chiffres dans le prix
             coinGamingPrice2 = coinGamingPrice2.toLocaleString();
+
+            // Arrondir le prix à l'entier inférieur et convertir en chaîne de caractères
+            coinGamingPrice2 = Math.floor(coinGamingPrice2).toString();
 
             $("#coin-price-g2").html(coinGamingPrice2 + " $US");
             $("#coin-price-change-g2").html(priceChangeText2);
           }
         });
       });
+
     </script>
     <div>
       <span class="coin-price-g2" id="coin-price-g2"></span>
