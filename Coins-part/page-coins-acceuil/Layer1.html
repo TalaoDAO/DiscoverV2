@@ -264,6 +264,9 @@
             // Ajouter un espace tous les 3 chiffres dans le prix
             coinGamingPrice2 = coinGamingPrice2.toLocaleString();
 
+            // Arrondir le prix à l'entier inférieur
+            coinGamingPrice2 = Math.floor(coinGamingPrice2);
+
             $("#coin-price-g2").html(coinGamingPrice2 + " $US");
             $("#coin-price-change-g2").html(priceChangeText2);
           }
