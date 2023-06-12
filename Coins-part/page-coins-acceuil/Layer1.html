@@ -22,10 +22,12 @@
 
     .barre:nth-child(1) {
       top: calc(33.33% - 1px);
+      width: 100%;
     }
 
     .barre:nth-child(2) {
       top: calc(66.67% - 1px);
+      width: 100%;
     }
   </style>
   <div class="background"></div>
@@ -153,7 +155,7 @@
   </div>
   <br>
   <!-- 2eme token -->
-  <div class="barre" style="width: 343px;"></div>
+  <div class="barre"></div>
   <div style="display: flex; align-items: center;">
     <div style="margin-right: 10px;">
       <style>
@@ -277,7 +279,7 @@
     </div>
   </div>
   <!-- 3eme token -->
-  <div class="barre" style="width: 343px;"></div>
+  <div class="barre"></div>
     <div style="display: flex; align-items: center;">
       <div style="margin-right: 10px;">
         <style>
@@ -475,7 +477,7 @@
         var button = document.createElement("button");
         button.style.width = "330px";
         button.style.height = "80px";
-        button.style.backgroundColor = "green";
+        button.style.backgroundColor = "red";
         button.style.position = "absolute";
         button.style.top = "515px";
         button.style.border = "none";
