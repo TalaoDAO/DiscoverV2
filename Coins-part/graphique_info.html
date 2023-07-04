@@ -91,8 +91,9 @@
           chartData.push({x: i, y: price, time: `${hours}:${minutes < 10 ? '0' : ''}${minutes}`});
         }
 
+        //delai affichage graph 24h
         const totalDuration = 10000;
-        const delayBetweenPoints = totalDuration / chartData.length;
+        const delayBetweenPoints = totalDuration / (chartData.length * 2);
         const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(chartData[0].y) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
         const animation = {
           x: {
