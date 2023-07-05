@@ -37,21 +37,21 @@
       bouton.className = "boutongraph violet";
     }
       // Récupération de l'URL actuelle
-      var url_graph = window.location.href;
+      var url_graph_nft = window.location.href;
 
       // Recherche de la position du caractère "?"
-      var index = url_graph.indexOf("?");
+      var index = url_graph_nft.indexOf("?");
 
       // Vérification si le caractère "?" est présent dans l'URL
       if (index !== -1) {
         // Extraction du texte après le caractère "?"
-        var queryText = url_graph.substr(index + 1);
+        var queryText = url_graph_nft.substr(index + 1);
 
         // Affichage du texte extrait
         console.log(queryText);
 
-        // Assignation du texte extrait à la variable NameUrl
-        var NameUrl = queryText;
+        // Assignation du texte extrait à la variable NameUrlNft
+        var NameUrlNft = queryText;
       }
 
       // let currentChart;
@@ -59,7 +59,7 @@
 
       //24h
       async function getData1() {
-        const response = await fetch("https://pro-api.coingecko.com/api/v3/nfts/"+ NameUrl + "/market_chart?vs_currency=usd&days=1&interval=5m&sparkline=false&x_cg_pro_api_key=CG-hPW3ZUUSuLwe3Xmvgx6rYnK7");
+        const response = await fetch("https://pro-api.coingecko.com/api/v3/nfts/"+ NameUrlNft + "/market_chart?vs_currency=usd&days=1&interval=5m&sparkline=false&x_cg_pro_api_key=CG-hPW3ZUUSuLwe3Xmvgx6rYnK7");
         const data = await response.json();
         return data;
       }
@@ -68,15 +68,15 @@
         try {
 
         const data = await getData1();
-        const prices = data.prices;
+        const floor_price_usd = data.floor_price_usd;
 
         const chartData = [];
         const xLabels = [];
         let previousHour = -1;
 
-        for (let i = 0; i < prices.length; i++) {
-          const timestamp = prices[i][0];
-          const price = prices[i][1];
+        for (let i = 0; i < floor_price_usd.length; i++) {
+          const timestamp = floor_price_usd[i][0];
+          const price = floor_price_usd[i][1];
           const date = new Date(timestamp);
           const hours = date.getHours();
           const minutes = date.getMinutes();
@@ -193,21 +193,21 @@
 
       //7d
       async function getData2() {
-        const response = await fetch("https://pro-api.coingecko.com/api/v3/nfts/"+ NameUrl + "/market_chart?vs_currency=usd&days=7&interval=4h&sparkline=false&x_cg_pro_api_key=CG-hPW3ZUUSuLwe3Xmvgx6rYnK7");
+        const response = await fetch("https://pro-api.coingecko.com/api/v3/nfts/"+ NameUrlNft + "/market_chart?vs_currency=usd&days=7&interval=4h&sparkline=false&x_cg_pro_api_key=CG-hPW3ZUUSuLwe3Xmvgx6rYnK7");
         const data = await response.json();
         return data;
       }
 
       async function createChart2() {
         const data = await getData2();
-        const prices = data.prices;
+        const floor_price_usd = data.floor_price_usd;
 
         const chartData = [];
         const xLabels = [];
 
-        for (let i = 0; i < prices.length; i++) {
-          const timestamp = prices[i][0];
-          const price = prices[i][1];
+        for (let i = 0; i < floor_price_usd.length; i++) {
+          const timestamp = floor_price_usd[i][0];
+          const price = floor_price_usd[i][1];
           const date = new Date(timestamp);
           const hours = date.getHours();
           const day = date.getDate();
@@ -288,21 +288,21 @@
 
       //30d
       async function getData3() {
-        const response = await fetch("https://pro-api.coingecko.com/api/v3/nfts/"+ NameUrl + "/market_chart?vs_currency=usd&days=30&interval=1d&sparkline=false&x_cg_pro_api_key=CG-hPW3ZUUSuLwe3Xmvgx6rYnK7");
+        const response = await fetch("https://pro-api.coingecko.com/api/v3/nfts/"+ NameUrlNft + "/market_chart?vs_currency=usd&days=30&interval=1d&sparkline=false&x_cg_pro_api_key=CG-hPW3ZUUSuLwe3Xmvgx6rYnK7");
         const data = await response.json();
         return data;
       }
 
       async function createChart3() {
         const data = await getData3();
-        const prices = data.prices;
+        const floor_price_usd = data.floor_price_usd;
 
         const chartData = [];
         const xLabels = [];
 
-        for (let i = 0; i < prices.length; i++) {
-          const timestamp = prices[i][0];
-          const price = prices[i][1];
+        for (let i = 0; i < floor_price_usd.length; i++) {
+          const timestamp = floor_price_usd[i][0];
+          const price = floor_price_usd[i][1];
           const date = new Date(timestamp);
           const day = date.getDate();
           const month = date.getMonth() + 1;
@@ -379,21 +379,21 @@
 
       //200d
       async function getData4() {
-        const response = await fetch("https://pro-api.coingecko.com/api/v3/nfts/"+ NameUrl + "/market_chart?vs_currency=usd&days=200&interval=1d&sparkline=false&x_cg_pro_api_key=CG-hPW3ZUUSuLwe3Xmvgx6rYnK7");
+        const response = await fetch("https://pro-api.coingecko.com/api/v3/nfts/"+ NameUrlNft + "/market_chart?vs_currency=usd&days=200&interval=1d&sparkline=false&x_cg_pro_api_key=CG-hPW3ZUUSuLwe3Xmvgx6rYnK7");
         const data = await response.json();
         return data;
       }
 
       async function createChart4() {
         const data = await getData4();
-        const prices = data.prices;
+        const floor_price_usd = data.floor_price_usd;
 
         const chartData = [];
         const xLabels = [];
 
-        for (let i = 0; i < prices.length; i++) {
-          const timestamp = prices[i][0];
-          const price = prices[i][1];
+        for (let i = 0; i < floor_price_usd.length; i++) {
+          const timestamp = floor_price_usd[i][0];
+          const price = floor_price_usd[i][1];
           const date = new Date(timestamp);
           const day = date.getDate();
           const month = date.getMonth() + 1;
@@ -470,21 +470,21 @@
 
       //1y
       async function getData5() {
-        const response = await fetch("https://pro-api.coingecko.com/api/v3/nfts/"+ NameUrl + "/market_chart?vs_currency=usd&days=365&interval=1d&sparkline=false&x_cg_pro_api_key=CG-hPW3ZUUSuLwe3Xmvgx6rYnK7");
+        const response = await fetch("https://pro-api.coingecko.com/api/v3/nfts/"+ NameUrlNft + "/market_chart?vs_currency=usd&days=365&interval=1d&sparkline=false&x_cg_pro_api_key=CG-hPW3ZUUSuLwe3Xmvgx6rYnK7");
         const data = await response.json();
         return data;
       }
 
       async function createChart5() {
         const data = await getData5();
-        const prices = data.prices;
+        const floor_price_usd = data.floor_price_usd;
 
         const chartData = [];
         const xLabels = [];
 
-        for (let i = 0; i < prices.length; i++) {
-          const timestamp = prices[i][0];
-          const price = prices[i][1];
+        for (let i = 0; i < floor_price_usd.length; i++) {
+          const timestamp = floor_price_usd[i][0];
+          const price = floor_price_usd[i][1];
           const date = new Date(timestamp);
           const day = date.getDate();
           const month = date.getMonth() + 1;
@@ -561,21 +561,21 @@
 
       //Max
       async function getData6() {
-        const response = await fetch("https://pro-api.coingecko.com/api/v3/nfts/"+ NameUrl + "/market_chart?vs_currency=usd&days=max&interval=1d&sparkline=false&x_cg_pro_api_key=CG-hPW3ZUUSuLwe3Xmvgx6rYnK7");
+        const response = await fetch("https://pro-api.coingecko.com/api/v3/nfts/"+ NameUrlNft + "/market_chart?vs_currency=usd&days=max&interval=1d&sparkline=false&x_cg_pro_api_key=CG-hPW3ZUUSuLwe3Xmvgx6rYnK7");
         const data = await response.json();
         return data;
       }
 
       async function createChart6() {
         const data = await getData6();
-        const prices = data.prices;
+        const floor_price_usd = data.floor_price_usd;
 
         const chartData = [];
         const xLabels = [];
 
-        for (let i = 0; i < prices.length; i++) {
-          const timestamp = prices[i][0];
-          const price = prices[i][1];
+        for (let i = 0; i < floor_price_usd.length; i++) {
+          const timestamp = floor_price_usd[i][0];
+          const price = floor_price_usd[i][1];
           const date = new Date(timestamp);
           const day = date.getDate();
           const month = date.getMonth() + 1;
