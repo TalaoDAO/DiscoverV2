@@ -193,7 +193,7 @@
 
       //7d
       async function getData2() {
-        const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/"+ NameUrl + "/market_chart?vs_currency=usd&days=7&interval=4h&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
+        const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/"+ NameUrl + "/market_chart?vs_currency=usd&days=7&interval=daily&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
         const data = await response.json();
         return data;
       }
@@ -209,16 +209,9 @@
           const timestamp = prices[i][0];
           const price = prices[i][1];
           const date = new Date(timestamp);
-          const hours = date.getHours();
           const day = date.getDate();
 
-          if (hours === 0) {
-            xLabels.push(day + '/' + (date.getMonth() + 1));
-          } else {
-            xLabels.push('');
-          }
-
-          chartData.push({ x: i, y: price, time: hours + 'h', date: date.toDateString() });
+          chartData.push({ x: i, y: price, time: day + '/', date: date.toDateString() });
         }
 
         const config = {
@@ -288,7 +281,7 @@
 
       //30d
       async function getData3() {
-        const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/"+ NameUrl + "/market_chart?vs_currency=usd&days=30&interval=1d&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
+        const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/"+ NameUrl + "/market_chart?vs_currency=usd&days=30&interval=daily&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
         const data = await response.json();
         return data;
       }
@@ -379,7 +372,7 @@
 
       //200d
       async function getData4() {
-        const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/"+ NameUrl + "/market_chart?vs_currency=usd&days=200&interval=1d&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
+        const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/"+ NameUrl + "/market_chart?vs_currency=usd&days=200&interval=daily&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
         const data = await response.json();
         return data;
       }
@@ -470,7 +463,7 @@
 
       //1y
       async function getData5() {
-        const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/"+ NameUrl + "/market_chart?vs_currency=usd&days=365&interval=1d&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
+        const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/"+ NameUrl + "/market_chart?vs_currency=usd&days=365&interval=daily&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
         const data = await response.json();
         return data;
       }
@@ -561,7 +554,7 @@
 
       //Max
       async function getData6() {
-        const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/"+ NameUrl + "/market_chart?vs_currency=usd&days=max&interval=1d&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
+        const response = await fetch("https://pro-api.coingecko.com/api/v3/coins/"+ NameUrl + "/market_chart?vs_currency=usd&days=max&interval=daily&sparkline=false&x_cg_pro_api_key=CG-9t151QqwDaQwxkPj4U6vmigH");
         const data = await response.json();
         return data;
       }
