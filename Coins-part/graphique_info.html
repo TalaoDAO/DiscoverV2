@@ -210,7 +210,10 @@
           const price = prices[i][1];
           const date = new Date(timestamp);
           const day = date.getDate();
+          const month = date.getMonth() + 1;
 
+          xLabels.push(day + '/' + month);
+          
           chartData.push({ x: i, y: price, time: day + '/', date: date.toDateString() });
         }
 
