@@ -643,19 +643,19 @@
         currentChart = new Chart(ctx, config);
       }
 
-      window.addEventListener('DOMContentLoaded', createChart1);
-      //Afficher automatique le 24h au reset page
-      createChart1();
+      window.addEventListener('DOMContentLoaded', createChart2);
+      //Afficher automatique le 7d au reset page
+      createChart2();
 
       $(document).ready(function() {
         setTimeout(() => {
           $(".boutongraph").on("click", async function(){
             switch($(this).attr('data-time')){
-              case '24h':
-                await createChart1();
-                $(".boutongraph").removeClass('violet')
-                $(this).addClass('violet')
-                break;
+              // case '24h':
+              //   await createChart1();
+              //   $(".boutongraph").removeClass('violet')
+              //   $(this).addClass('violet')
+              //   break;
               case '7d':
                 createChart2();
                 $(".boutongraph").removeClass('violet')
